@@ -1,0 +1,17 @@
+.Offer {
+  background-color: #ebedef;
+  min-height: 90vh;
+  height: 93vh;
+}
+
+.ProductContainer {
+  width: 1000px;
+  margin: auto;
+  padding-top: 2rem;
+
+  > img {
+    width: 350px;
+    height: 600px;
+    object-fit: cover;
+  }
+}

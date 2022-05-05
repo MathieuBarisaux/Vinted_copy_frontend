@@ -1,0 +1,68 @@
+header {
+  padding: 0.9rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  img {
+    width: 100px;
+  }
+}
+
+.Header {
+  &__search {
+    background-color: #f4f6f6;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    flex: 0.8;
+
+    input {
+      border: none;
+      background-color: #f4f6f6;
+      font-size: 1rem;
+    }
+
+    input::placeholder {
+      color: #d2d2d2;
+    }
+
+    i {
+      margin-right: 0.3rem;
+      color: #cecdcd;
+      font-size: 1rem;
+    }
+  }
+
+  &__userInteract {
+    display: flex;
+  }
+
+  &__btn {
+    font-size: 0.8rem;
+    border: 1px #2db0ba solid;
+    color: #2db0ba;
+    border-radius: 5px;
+    width: 112px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 1rem;
+    }
+
+    &:nth-child(4) {
+      color: #fff;
+      background-color: #2db0ba;
+    }
+
+    &--disconnect {
+      background-color: #c3175a;
+      border: none;
+      color: white;
+    }
+  }
+}
