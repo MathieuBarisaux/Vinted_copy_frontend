@@ -17,12 +17,12 @@ const Offer = () => {
         );
         setOffer(response.data);
         setOfferIsLoading(false);
-        console.log(offer);
       } catch (error) {
         console.log(error.response);
       }
     };
     fetchOffer();
+    // eslint-disable-next-line
   }, []);
 
   return (

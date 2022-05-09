@@ -1,0 +1,30 @@
+.PublishOffer {
+  background-color: #ebecef;
+}
+
+.PublishForm {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  > h2 {
+    font-size: 1.3rem;
+  }
+
+  &__insert {
+    background-color: #fff;
+    margin-top: 1rem;
+    border: 1px rgb(222, 222, 222) solid;
+
+    > div:not(:last-child) {
+      border-bottom: 1px rgb(222, 222, 222) solid;
+    }
+  }
+
+  button {
+    margin-top: 3rem;
+    width: fit-content;
+    align-self: flex-end;
+    margin-bottom: 5rem;
+  }
+}

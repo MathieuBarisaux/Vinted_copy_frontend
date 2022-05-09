@@ -1,0 +1,67 @@
+.Input {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  height: fit-content;
+
+  p {
+    flex: 1;
+    font-weight: bold;
+  }
+
+  input:not(input[type="file"]),
+  textarea {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px rgb(222, 222, 222) solid;
+    font-family: "Nunito";
+    resize: none;
+
+    &::placeholder {
+      color: rgb(222, 222, 222);
+    }
+  }
+
+  input[type="file"] {
+    appearance: none;
+    display: none;
+  }
+
+  &Picture {
+    width: 95%;
+    margin: 2rem auto;
+    padding: 4rem;
+    border: 1px rgb(223, 223, 223) dashed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    > p {
+      font-weight: normal;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    > label {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border: 1px #2db0ba solid;
+      color: #2db0ba;
+      border-radius: 10px;
+
+      > i {
+        margin-right: 1rem;
+      }
+
+      > p {
+        font-weight: normal;
+      }
+    }
+  }
+}

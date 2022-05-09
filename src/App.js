@@ -1,7 +1,7 @@
 import "./App.scss";
 
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
 
 // ** Components **
@@ -11,6 +11,8 @@ import Header from "./components/Header/Header";
 import Home from "./containers/Home/Home";
 import Offer from "./containers/Offer/Offer";
 import Signup from "./containers/Signup/Signup";
+import Login from "./containers/Login/Login";
+import PublishOffer from "./containers/PublishOffer/PublishOffer";
 
 function App() {
   const [allOffers, setAllOffers] = useState("");
@@ -19,11 +21,17 @@ function App() {
   const [bearerToken, setBearerToken] = useState("");
   const [bearerPresent, setBearerPresent] = useState(false);
 
+  const [userSearch, setUserSearch] = useState("");
+  const [userRank, setUserRank] = useState("price-asc");
+
   useEffect(() => {
     const fetchAllOffers = async () => {
       try {
+        const title = `title=${userSearch}`;
+        const rank = `&sort=${userRank}`;
+
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?${title}${rank}`
         );
 
         setAllOffers(response.data);
@@ -33,7 +41,7 @@ function App() {
       }
     };
     fetchAllOffers();
-  }, []);
+  }, [userSearch, userRank]);
 
   return (
     <div className="App">
@@ -43,6 +51,10 @@ function App() {
           setBearerPresent={setBearerPresent}
           bearerToken={bearerToken}
           setBearerToken={setBearerToken}
+          userSearch={userSearch}
+          setUserSearch={setUserSearch}
+          userRank={userRank}
+          setUserRank={setUserRank}
         />
         <Routes>
           <Route
@@ -58,6 +70,19 @@ function App() {
                 setBearerPresent={setBearerPresent}
               />
             }
+          />
+          <Route
+            path="/user/login"
+            element={
+              <Login
+                bearerPresent={bearerPresent}
+                setBearerPresent={setBearerPresent}
+              />
+            }
+          />
+          <Route
+            path="/offer/publish"
+            element={<PublishOffer bearerToken={bearerToken} />}
           />
         </Routes>
       </Router>

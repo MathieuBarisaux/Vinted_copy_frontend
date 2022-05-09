@@ -8,13 +8,27 @@ import logo from "../../Vinted-logo.svg.png";
 import { useEffect } from "react";
 
 const Header = (props) => {
-  const { bearerPresent, setBrearerPresent, bearerToken, setBearerToken } =
-    props;
+  const {
+    bearerPresent,
+    bearerToken,
+    setBearerToken,
+    userSearch,
+    setUserSearch,
+    userRank,
+    setUserRank,
+  } = props;
 
   useEffect(() => {
     const tokenUser = Cookies.get("bearerToken");
     setBearerToken(tokenUser);
+    // eslint-disable-next-line
   }, [bearerPresent]);
+
+  // ** Form **
+  const catchUserSearch = (event) => {
+    const newValue = event.target.value;
+    setUserSearch(newValue);
+  };
 
   return (
     <header className="container">
@@ -22,9 +36,45 @@ const Header = (props) => {
         <img src={logo} alt="" />
       </Link>
 
-      <div className="Header__search">
-        <i className="fas fa-search"></i>
-        <input type="text" placeholder="Recherche des articles" />
+      <div className="Header__setSearch">
+        <div className="Header__search">
+          <i className="fas fa-search"></i>
+          <input
+            type="text"
+            placeholder="Recherche des articles"
+            value={userSearch}
+            onChange={catchUserSearch}
+          />
+        </div>
+
+        <div className="setSearch">
+          <p>Trier par prix :</p>
+          <div
+            onClick={() => {
+              if (userRank === "price-asc") {
+                setUserRank("price-desc");
+              } else {
+                setUserRank("price-asc");
+              }
+            }}
+          >
+            <div
+              className={
+                userRank === "price-asc"
+                  ? "setSearch__priceVar"
+                  : "setSearch__priceVar setSearch__priceVar--right"
+              }
+            >
+              <i
+                className={
+                  userRank === "price-asc"
+                    ? "fas fa-arrow-down"
+                    : "fas fa-arrow-up"
+                }
+              ></i>
+            </div>
+          </div>
+        </div>
       </div>
 
       {bearerToken ? (
@@ -45,15 +95,19 @@ const Header = (props) => {
             </div>
           </Link>
 
-          <div className="Header__btn">
-            <p>Se connecter</p>
-          </div>
+          <Link to={"/user/login"}>
+            <div className="Header__btn">
+              <p>Se connecter</p>
+            </div>
+          </Link>
         </div>
       )}
 
-      <div className="Header__btn">
-        <p>Vends tes articles</p>
-      </div>
+      <Link to={bearerToken ? "/offer/publish" : "/user/login"}>
+        <div className="Header__btn Header__btn--blueBack">
+          <p>Vends tes articles</p>
+        </div>
+      </Link>
     </header>
   );
 };
