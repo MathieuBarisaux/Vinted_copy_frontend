@@ -16,7 +16,7 @@ const Offer = (props) => {
     const fetchOffer = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/offer/${offerId.id}`
+          `https://vinteddeploy.herokuapp.com/${offerId.id}`
         );
         setOffer(response.data);
         setOfferIsLoading(false);

@@ -40,7 +40,7 @@ const PublishOffer = (props) => {
     formData.append("state", product_state);
 
     const response = await axios.post(
-      "http://localhost:3001/offer/publish",
+      "https://vinteddeploy.herokuapp.com/offer/publish",
       formData,
       {
         headers: {
@@ -51,8 +51,7 @@ const PublishOffer = (props) => {
 
     if (response.status === 200) {
       navigate("/");
-    }else{
-      
+    } else {
     }
   };
 
