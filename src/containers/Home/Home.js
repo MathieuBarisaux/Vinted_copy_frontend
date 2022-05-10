@@ -35,15 +35,15 @@ const Home = ({ allOffers, isLoading }) => {
         {isLoading !== true &&
           allOffers.offers.map((item) => {
             const avatar = item.owner.account.avatar;
-            const offerPicture = item.product_image.secure_url;
-            const tall = item.product_details[1].TAILLE;
-            const origin = item.product_details[0].MARQUE;
+            const offerPicture = item.product_image;
+            const tall = item.product_details[3].taille;
+            const origin = item.product_details[0].marque;
 
             return (
               <Link to={`offer/${item._id}`} key={item._id}>
                 <div className="OfferContainer">
                   <div className="OfferContainer__saler">
-                    {avatar && <img src={avatar.secure_url} alt="" />}
+                    {avatar && <img src={avatar} alt="" />}
                     <p>{item.owner.account.username}</p>
                   </div>
                   <img

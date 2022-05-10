@@ -13,7 +13,7 @@ const Offer = () => {
     const fetchOffer = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offer/${offerId.id}`
+          `http://localhost:3001/offer/${offerId.id}`
         );
         setOffer(response.data);
         setOfferIsLoading(false);
@@ -30,7 +30,7 @@ const Offer = () => {
     <div className="Offer">
       {offerIsLoading === false && (
         <div className="ProductContainer">
-          <img src={offer.product_image.secure_url} alt="Vêtement en vente" />
+          <img src={offer.product_image} alt="Vêtement en vente" />
           <div className="ProductContainer__infos">
             <p>{offer.product_price} €</p>
             <ul>
@@ -48,10 +48,7 @@ const Offer = () => {
             <p>{offer.product_description}</p>
             <div className="ProductContainer__user">
               {offer.owner.account.avatar && (
-                <img
-                  src={offer.owner.account.avatar.secure_url}
-                  alt="User profil"
-                />
+                <img src={offer.owner.account.avatar} alt="User profil" />
               )}
               <p>{offer.owner.account.username}</p>
             </div>

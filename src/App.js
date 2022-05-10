@@ -31,7 +31,7 @@ function App() {
         const rank = `&sort=${userRank}`;
 
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?${title}${rank}`
+          `http://localhost:3001/offers?${title}${rank}`
         );
 
         setAllOffers(response.data);
