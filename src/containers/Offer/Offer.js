@@ -15,7 +15,6 @@ const Offer = (props) => {
   useEffect(() => {
     const fetchOffer = async () => {
       try {
-        console.log(offerId.id);
         const response = await axios.get(
           `https://vinteddeploy.herokuapp.com/offer/${offerId.id}`
         );

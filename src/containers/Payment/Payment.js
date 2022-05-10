@@ -39,11 +39,14 @@ const Payment = (props) => {
     const stripeToken = stripeResponse.token.id;
     const productID = basket._id;
     // J'envoi le token à mon server pour envoyer le paiement à Stripe
-    const response = await axios.post("http://localhost:3001/pay", {
-      stripeToken: stripeToken,
-      userID: userID,
-      productID: productID,
-    });
+    const response = await axios.post(
+      "https://vinteddeploy.herokuapp.com/pay",
+      {
+        stripeToken: stripeToken,
+        userID: userID,
+        productID: productID,
+      }
+    );
 
     if (response.data.status === "succeeded") {
       setPaymentCompleted(true);

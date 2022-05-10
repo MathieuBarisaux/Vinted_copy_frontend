@@ -34,9 +34,12 @@ const Header = (props) => {
 
   return (
     <header className="container">
-      <Link to={"/"}>
-        <img src={logo} alt="" />
-      </Link>
+      <div className="Header__logo">
+        <Link to={"/"}>
+          <img src={logo} alt="" />
+        </Link>
+        <i class="fas fa-bars"></i>
+      </div>
 
       <div className="Header__setSearch">
         <div className="Header__search">

@@ -99,3 +99,21 @@
     }
   }
 }
+
+@media screen and (max-width: 940px) {
+  .Banner {
+    height: 300px;
+
+    &__img {
+      height: 300px;
+
+      img {
+        height: 300px;
+      }
+    }
+
+    &__CallToAction {
+      display: none;
+    }
+  }
+}
