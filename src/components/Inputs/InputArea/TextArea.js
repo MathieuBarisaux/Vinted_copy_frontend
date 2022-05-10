@@ -1,7 +1,7 @@
 import "../Inputs.scss";
 
 const InputArea = (props) => {
-  const { type, title, placeholder, valueToSet, setValue } = props;
+  const { type, title, placeholder, setValue } = props;
 
   const handleChange = (event) => {
     const newValue = event.target.value;
