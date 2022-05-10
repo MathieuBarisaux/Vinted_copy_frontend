@@ -15,9 +15,11 @@ const Offer = (props) => {
   useEffect(() => {
     const fetchOffer = async () => {
       try {
+        console.log(offerId.id);
         const response = await axios.get(
-          `https://vinteddeploy.herokuapp.com/${offerId.id}`
+          `https://vinteddeploy.herokuapp.com/offer/${offerId.id}`
         );
+
         setOffer(response.data);
         setOfferIsLoading(false);
       } catch (error) {
