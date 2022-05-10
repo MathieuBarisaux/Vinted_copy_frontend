@@ -1,0 +1,87 @@
+.Payment {
+  background-color: #ebecee;
+  height: 100vh;
+  padding: 2rem 0;
+}
+
+@keyframes rotateLoading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.PaymentContainer {
+  width: 600px;
+  margin: auto;
+  background-color: #fff;
+  padding: 1rem;
+
+  > h1 {
+    text-align: center;
+    padding: 4rem;
+
+    > i {
+      margin-top: 3rem;
+      font-size: 2rem;
+      text-align: center;
+      animation: rotateLoading 2s infinite;
+    }
+  }
+
+  > p:first-child {
+    color: #c4c4c4;
+    font-size: 0.9rem;
+  }
+
+  > ul {
+    width: 100%;
+    margin-top: 2rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px rgb(226, 226, 226) solid;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+      color: #8c8c8c;
+    }
+  }
+
+  > p:nth-child(3) {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+
+  > p:nth-child(4) {
+    margin-top: 3rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px rgb(226, 226, 226) solid;
+  }
+
+  button {
+    margin-top: 2rem;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #00c16c;
+    cursor: pointer;
+
+    i {
+      margin-left: 1rem;
+      animation: rotateLoading 2s infinite;
+    }
+
+    &:hover {
+      background-color: #01b869;
+    }
+  }
+}

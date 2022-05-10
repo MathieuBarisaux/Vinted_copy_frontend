@@ -27,8 +27,10 @@ const Login = (props) => {
       );
 
       const token = await response.data.token;
+      const userID = await response.data.id;
 
       Cookies.set("bearerToken", token, { expires: 360 });
+      Cookies.set("userID", userID, { expires: 360 });
 
       setBearerPresent(!bearerPresent);
       navigate("/");

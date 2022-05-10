@@ -1,13 +1,16 @@
 import "./Offer.scss";
 
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import axios from "axios";
 
-const Offer = () => {
+const Offer = (props) => {
   const offerId = useParams();
   const [offer, setOffer] = useState("");
   const [offerIsLoading, setOfferIsLoading] = useState(true);
+
+  const { bearerToken, setBasket } = props;
 
   useEffect(() => {
     const fetchOffer = async () => {
@@ -17,7 +20,6 @@ const Offer = () => {
         );
         setOffer(response.data);
         setOfferIsLoading(false);
-        console.log(offer);
       } catch (error) {
         console.log(error.response);
       }
@@ -52,7 +54,16 @@ const Offer = () => {
               )}
               <p>{offer.owner.account.username}</p>
             </div>
-            <button>Acheter</button>
+
+            <Link to={bearerToken ? "/payment" : "/user/login"}>
+              <button
+                onClick={() => {
+                  setBasket(offer);
+                }}
+              >
+                Acheter
+              </button>
+            </Link>
           </div>
         </div>
       )}

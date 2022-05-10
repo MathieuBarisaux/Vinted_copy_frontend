@@ -85,6 +85,7 @@ const Header = (props) => {
           onClick={() => {
             setBearerToken("");
             Cookies.remove("bearerToken");
+            Cookies.remove("userID");
           }}
         >
           <p>Se déconnecter</p>

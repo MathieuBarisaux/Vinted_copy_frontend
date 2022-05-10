@@ -1,8 +1,11 @@
 import "./App.scss";
 
+// ** Dependencies **
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 // ** Components **
 import Header from "./components/Header/Header";
@@ -13,6 +16,7 @@ import Offer from "./containers/Offer/Offer";
 import Signup from "./containers/Signup/Signup";
 import Login from "./containers/Login/Login";
 import PublishOffer from "./containers/PublishOffer/PublishOffer";
+import Payment from "./containers/Payment/Payment";
 
 function App() {
   const [allOffers, setAllOffers] = useState("");
@@ -23,6 +27,11 @@ function App() {
 
   const [userSearch, setUserSearch] = useState("");
   const [userRank, setUserRank] = useState("price-asc");
+
+  const [basket, setBasket] = useState("");
+  const stripePromise = loadStripe(
+    "pk_test_51KxsLdGz5mDcTIN9ViiLt48tk3Xn0buleQ41p993gWeVGfhpEMe3vhrmkh4VHEV6TRuOwHnjspwNUQ0eDGhe7RHA00Ka3HEuw9"
+  );
 
   useEffect(() => {
     const fetchAllOffers = async () => {
@@ -61,7 +70,10 @@ function App() {
             path="/"
             element={<Home isLoading={isLoading} allOffers={allOffers} />}
           />
-          <Route path="/offer/:id" element={<Offer />} />
+          <Route
+            path="/offer/:id"
+            element={<Offer bearerToken={bearerToken} setBasket={setBasket} />}
+          />
           <Route
             path="/user/signup"
             element={
@@ -83,6 +95,14 @@ function App() {
           <Route
             path="/offer/publish"
             element={<PublishOffer bearerToken={bearerToken} />}
+          />
+          <Route
+            path="/payment"
+            element={
+              <Elements stripe={stripePromise}>
+                <Payment basket={basket} />
+              </Elements>
+            }
           />
         </Routes>
       </Router>
