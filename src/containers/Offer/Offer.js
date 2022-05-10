@@ -17,6 +17,7 @@ const Offer = () => {
         );
         setOffer(response.data);
         setOfferIsLoading(false);
+        console.log(offer);
       } catch (error) {
         console.log(error.response);
       }
@@ -30,13 +31,31 @@ const Offer = () => {
       {offerIsLoading === false && (
         <div className="ProductContainer">
           <img src={offer.product_image.secure_url} alt="Vêtement en vente" />
-          <div className="ProductContainer">
-            <p>{offer.product_price}</p>
+          <div className="ProductContainer__infos">
+            <p>{offer.product_price} €</p>
             <ul>
-              <li>MARQUE {offer.product_details[0].MARQUE}</li>
-              <li>TAILLE {offer.product_details[1].TAILLE}</li>
-              <li>ETAT {offer.product_details[2].ETAT}</li>
+              {offer.product_details.map((item, index) => {
+                const object = Object.keys(item);
+                return (
+                  <li key={index}>
+                    <span>{object}</span>
+                    <span>{item[object]}</span>
+                  </li>
+                );
+              })}
             </ul>
+            <p>{offer.product_name}</p>
+            <p>{offer.product_description}</p>
+            <div className="ProductContainer__user">
+              {offer.owner.account.avatar && (
+                <img
+                  src={offer.owner.account.avatar.secure_url}
+                  alt="User profil"
+                />
+              )}
+              <p>{offer.owner.account.username}</p>
+            </div>
+            <button>Acheter</button>
           </div>
         </div>
       )}

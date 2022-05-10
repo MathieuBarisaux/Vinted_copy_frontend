@@ -1,5 +1,7 @@
 .PublishOffer {
   background-color: #ebecef;
+  height: 100vh;
+  padding-bottom: 10rem;
 }
 
 .PublishForm {
@@ -26,5 +28,10 @@
     width: fit-content;
     align-self: flex-end;
     margin-bottom: 5rem;
+    background-color: #2db0ba;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
   }
 }

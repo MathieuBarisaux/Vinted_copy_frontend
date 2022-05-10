@@ -1,6 +1,6 @@
 import "./Header.scss";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import Cookies from "js-cookie";
 
@@ -17,6 +17,8 @@ const Header = (props) => {
     userRank,
     setUserRank,
   } = props;
+
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const tokenUser = Cookies.get("bearerToken");
@@ -47,7 +49,7 @@ const Header = (props) => {
           />
         </div>
 
-        <div className="setSearch">
+        <div className={pathname === "/" ? "setSearch" : "setSearch--hidden"}>
           <p>Trier par prix :</p>
           <div
             onClick={() => {

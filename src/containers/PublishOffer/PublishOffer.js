@@ -51,6 +51,8 @@ const PublishOffer = (props) => {
 
     if (response.status === 200) {
       navigate("/");
+    }else{
+      
     }
   };
 
